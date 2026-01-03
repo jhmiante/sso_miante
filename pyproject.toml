@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sso-miante"
+version = "0.1.2"
+description = "SSO Simplificado"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "Django>=4.2",
+  "requests>=2.32.5",
+]
+
+authors = [{ name = "Jonathas Miante" }]
+license = { file = "LICENSE" }
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Package data para AMBOS os apps
+[tool.setuptools.package-data]
+sso_miante = [
+  "templates/**/*",
+  "static/**/*",
+  "migrations/**/*",
+]
+
+sso_miante_client = [
+  "templates/**/*",
+  "static/**/*",
+  "migrations/**/*",
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+  "*.pyc",
+  "__pycache__/*",
+]

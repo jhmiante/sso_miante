@@ -35,6 +35,7 @@ class SsoMiante(models.Model):
         # Verifica a Autenticação do APP
         check = False
         sso = SsoMiante.objects.filter(app_id=app_id).first()
+        if not sso.ativo: raise Exception('APP SSO Inativo!!!')
         if sso:
             check = check_password(secrets, sso.secrets)        
         if check is False: raise Exception('Erro na Autenticação do Aplicativo!!!')

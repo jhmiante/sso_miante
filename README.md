@@ -15,7 +15,7 @@ Indicado para projetos que necessitam de login unificado, padronização de aces
 
 * github: <a href="https://github.com/jhmiante/sso_miante" target="_blank">jhmiante/sso_miante</a>
 
-* pypi: <a href="https://pypi.org/project/sso-miante/" target="_blank">PyPi sso-miante 0.1.2</a>
+* pypi: <a href="https://pypi.org/project/sso-miante/" target="_blank">PyPi sso-miante (last version)</a>
 
 
 

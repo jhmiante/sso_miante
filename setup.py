@@ -9,7 +9,7 @@ long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists
 
 setup(
     name="sso-miante",
-    version="0.1.2",
+    version="0.1.3",
     description="SSO Simplificado",
     long_description=long_description,
     long_description_content_type="text/markdown",

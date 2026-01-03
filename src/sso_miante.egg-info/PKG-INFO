@@ -1,15 +1,27 @@
 Metadata-Version: 2.4
 Name: sso-miante
-Version: 0.1.2
+Version: 0.1.3
 Summary: SSO Simplificado
 Author: Jonathas Miante
+License: MIT
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: OS Independent
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: Django>=4.2
 Requires-Dist: requests>=2.32.5
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: license
 Dynamic: license-file
+Dynamic: requires-dist
 Dynamic: requires-python
+Dynamic: summary
 
 # SSO Miante
 
@@ -27,6 +39,9 @@ Indicado para projetos que necessitam de login unificado, padronização de aces
 </p>
 
 * github: <a href="https://github.com/jhmiante/sso_miante" target="_blank">jhmiante/sso_miante</a>
+
+* pypi: <a href="https://pypi.org/project/sso-miante/" target="_blank">PyPi sso-miante 0.1.2</a>
+
 
 
 <br>
@@ -100,7 +115,7 @@ Primeiro deve instalar o **sso_miante** (deverá ser instalado em todos os proje
 pip install sso-miante
 ```
 
-Após a instalação do **sso_miante_client** no projeto principal, no arquivo **settings.py** inclua a seguinte linha em **INSTALLED_APPS**:
+Após a instalação do **sso_miante** no projeto, no arquivo **settings.py** inclua a seguinte linha em **INSTALLED_APPS**:
 
 ```python
 INSTALLED_APPS = [ 

@@ -74,6 +74,7 @@ Siga os passos abaixo para cadastrar um novo APP
 1. Clique em Novo
 2. Digite o nome para o Aplicativo
 3. Copie o **ID APP** e **SECRETS APP** e para um local seguro, você irá precisar dele quando for configurar o aplicativo que irá realizar o login
+4. Digite os Servidores (HOST) que poderão realizar login (Se precisar mais de um, digite um por linha)
 
 Pronto o projeto principal já está finalizado
 
@@ -123,3 +124,12 @@ urlpatterns = [
     path("", include("sso_miante_client.urls")),
 ]
 ```
+
+<br>
+<hr>
+<br>
+
+## Histórico de Versões
+
+* 0.0.9 ou anterior => Versões Beta (testes) (Não utilizar)
+* 1.0.0 => Versão Inicial  Oficial

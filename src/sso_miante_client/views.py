@@ -20,6 +20,7 @@ def sso_login(request):
             'sso_secrets': sso_secrets,
             'username': username,
             'password': password,
+            'server': str(request.get_host()),
         }
 
         response = requests.post(url_api, json=body)
@@ -27,8 +28,6 @@ def sso_login(request):
         if response.status_code == 200:
             sso_info = response.json()
             status = sso_info.get('status')
-
-            print(sso_info)
             
             if status == 200:
                 user = get_user_model().objects.filter(username=username)       

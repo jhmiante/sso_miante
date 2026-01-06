@@ -10,6 +10,7 @@ class SsoMiante(models.Model):
     app = models.EmailField('APP', max_length=200, unique=True)
     app_id = models.EmailField('APP ID', max_length=200, unique=True)
     secrets = models.EmailField('Secrets', max_length=1000)
+    server = models.TextField('server', max_length=5000, default='')
     ativo = models.BooleanField('active?', default=True)
 
     class Meta:
@@ -24,19 +25,19 @@ class SsoMiante(models.Model):
         n_id = int(n/2)
         return secrets.token_urlsafe(n_id), secrets.token_urlsafe(n)
     
-    def CREATE(id, secrets, app_name):
+    def CREATE(id, secrets, app_name, app_server):
         secrets = make_password(secrets)
-        sso = SsoMiante(app_id=id, secrets=secrets, app=app_name)
+        sso = SsoMiante(app_id=id, secrets=secrets, app=app_name, server=app_server)
         sso.save()
         return sso
 
-    def AUTHENTICATE(app_id, secrets, username, password):
-        
+    def AUTHENTICATE(app_id, secrets, username, password, server):
         # Verifica a Autenticação do APP
         check = False
         sso = SsoMiante.objects.filter(app_id=app_id).first()
-        if not sso.ativo: raise Exception('APP SSO Inativo!!!')
-        if sso:
+        if sso:            
+            if not sso.ativo: raise Exception('APP SSO Inativo!!!')
+            if server not in sso.server: raise Exception('Servidor não permitido!!!')
             check = check_password(secrets, sso.secrets)        
         if check is False: raise Exception('Erro na Autenticação do Aplicativo!!!')
         

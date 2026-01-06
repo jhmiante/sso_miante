@@ -13,7 +13,8 @@
     .text-end {text-align: end;}
 
     /* Botões */
-    .btn { display: inline-flex; min-width: 100px; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .btn-min {min-width: 100px;}
     .btn-secondary { background: #f3f4f6; border-color: #e5e7eb; color: #111827; }
     .btn-secondary:hover { background: #e5e7eb; }
     .btn-primary { background: #2563eb; color: #fff; }
@@ -60,26 +61,25 @@
     </div>
   </div>
 
+  <hr><br>
+
   <!-- TABELA -->
   <table class="table table-hover">
     <thead>
       <tr class="table-primary">
         <th>Nome APP</th>
         <th>ID APP</th>
-        <th style="width: 220px; padding-right: 20px; text-align: end">Ações</th>
+        <th>Ativo</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="cursor: pointer;">
       {# Exemplo de loop (opcional): apps vindo da view #}
       {% if apps %}
         {% for app in apps %}
-          <tr>
-            <td {% if app.ativo is False %} style="color: #fff; background-color: #ec1717;" {% endif %}>{{ app.app }} </td>
-            <td {% if app.ativo is False %} style="color: #fff; background-color: #ec1717;" {% endif %}>{{ app.app_id }}</td>
-            <td {% if app.ativo is False %} style="color: #fff; background-color: #ec1717; text-align: end" {% else %} style="text-align: end" {% endif %}>
-              <!-- placeholders -->
-              <a class="btn btn-secondary" href="{% url 'sso_ativar_desativar' pk=app.pk %}">{% if app.ativo %}Inativar{% else %}Ativar{% endif %}</a>
-            </td>
+          <tr onclick="window.location=`{% url 'sso_detail' pk=app.pk %}`">
+            <td {% if app.ativo is False %} style="background-color: #f0b2b2;" {% endif %}>{{ app.app }} </td>
+            <td {% if app.ativo is False %} style="background-color: #f0b2b2;" {% endif %}>{{ app.app_id }}</td>
+            <td {% if app.ativo is False %} style="background-color: #f0b2b2;" {% endif %}>{% if app.ativo %}Ativo{% else %}Inativo{% endif %}</td>            
           </tr>
         {% endfor %}
       {% else %}
@@ -115,6 +115,12 @@
           <label class="form-label" for="secret_app">SECRETS APP</label>
           <input class="form-control" type="text" id="secret_app" name="app_secret" value="{{secrets}}" required />
           <p class="form-label text-end"><i>*** Copie o SECRETS em um local seguro, após salvar não será possivel recuperá-lo ***</i></p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="app_server">SERVIDORES</label>
+          <textarea name="app_server" id="app_server" class="form-control">{{obj.server}}</textarea>
+          <p class="text-end text-12"><i>*** Adicione o servidor, um em cada linha. Ex: 127.0.0.1:8000 ***</i></p>
         </div>
       </div>
 

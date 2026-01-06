@@ -17,7 +17,8 @@ Indicado para projetos que necessitam de login unificado, padronização de aces
 
 * pypi: <a href="https://pypi.org/project/sso-miante/" target="_blank">PyPi sso-miante (last version)</a>
 
-    ![Downloads](https://pepy.tech/badge/sso-miante)
+    ![Downloads](https://pepy.tech/badge/sso-miante) / ![Downloads](https://pepy.tech/badge/sso-miante/month)
+
 
 
 
